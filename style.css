@@ -395,7 +395,7 @@ section{
     font-size: 16px;
 }
 
-@media (max-width:1285px){
+@media (max-width:768px){
     #menu-icon{
         display: block;
     }
