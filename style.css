@@ -423,11 +423,13 @@ section{
 
     .navbar{
         position: absolute;
-        top: 100%;
+        top: 0;
         right: -100%;
         width: 70%;
-        padding: 2rem;
+        height: 100vh
+        padding: 10rem 2rem 2rem;
         background: rgba(0,0,0,0.95);
+        backdrop-filter: blur(10px)
         border-left: 2px solid var(--main-color);
         border-bottom: 2px solid var(--main-color);
         border-bottom-left-radius: 2rem;
@@ -435,6 +437,8 @@ section{
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        gap: 2rem;
+        border-left: 2px solid var(--main-color);
     }
 
     .navbar.active{
@@ -443,6 +447,7 @@ section{
 
     .navbar a{
         display: block;
+        margin: 0;
         font-size: 2rem;
         margin: 1.5rem 0;
     }
