@@ -2,9 +2,9 @@ let menuIcon = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 
 menuIcon.onclick = () => {
-    menuIcon.classList.toggle('bx-x')
+    menuIcon.classList.toggle('bx-x');
     navbar.classList.toggle('active');
-}
+};
 
 emailjs.init("HT525Uc5AYVBrzPtf");
 
