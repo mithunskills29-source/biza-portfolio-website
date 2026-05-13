@@ -38,7 +38,7 @@ body {
     font-size: 3.5rem;
     color: var(--main-color);
     display: none;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .logo {
@@ -403,6 +403,11 @@ section{
 
     #menu-icon{
         display: block;
+        z-index: 1001;
+        color: var(--main-color);
+    }
+    #menu-icon.bx-x{
+        color: white;
     }
 
     .gradient-btn{
