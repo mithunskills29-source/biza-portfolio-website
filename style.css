@@ -378,7 +378,7 @@ section{
     text-align: center;
     margin
 }
-.footer ul{
+.footer u1{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -386,12 +386,12 @@ section{
     padding: 0rem;
     gap: 2rem;
 }
-.footer ul li a{
+.footer u1 li a{
     color: white;
     border-bottom: 3px solid transparent;
     transition: 0.3s ease-in-out;
 }
-.footer ul li a:hover{
+.footer u1 li a:hover{
     color: var(--main-color)
     border-bottom: 3px solid var(--main-color);
 }
