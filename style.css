@@ -376,10 +376,11 @@ section{
 }
 .footer .social-icons{
     text-align: center;
+    margin
 }
 .footer ul{
-    justify-content: center;
     display: flex;
+    justify-content: center;
     align-items: center;
     font-size: 1.8rem;
     padding: 0rem;
@@ -391,6 +392,7 @@ section{
     transition: 0.3s ease-in-out;
 }
 .footer ul li a:hover{
+    color: var(--main-color)
     border-bottom: 3px solid var(--main-color);
 }
 .footer .copyright{
@@ -545,4 +547,7 @@ section{
     footer{
         text-align: center;
     }
+    .footer u1{
+        flex-direction: colummn;
+        gap: 1.5rem;
 }
