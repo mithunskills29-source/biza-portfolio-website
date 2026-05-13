@@ -404,6 +404,9 @@ section{
     #menu-icon{
         display: block;
     }
+    .logo{
+        transform: scale(1.3);
+    }
 
     .gradient-btn{
         display: none;
