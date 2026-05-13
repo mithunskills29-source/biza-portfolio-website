@@ -378,7 +378,7 @@ section{
     text-align: center;
     margin
 }
-.footer u1{
+.footer ul{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -386,13 +386,13 @@ section{
     padding: 0rem;
     gap: 2rem;
 }
-.footer u1 li a{
+.footer ul li a{
     color: white;
     border-bottom: 3px solid transparent;
     transition: 0.3s ease-in-out;
 }
-.footer u1 li a:hover{
-    color: var(--main-color)
+.footer ul li a:hover{
+    color: var(--main-color);
     border-bottom: 3px solid var(--main-color);
 }
 .footer .copyright{
