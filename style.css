@@ -46,7 +46,7 @@ body {
     color: var(--text-color);
     font-weight: 800;
     cursor: pointer;
-    transition: 0.3 ease-in-out;
+    transition: 0.3s ease-in-out;
     font-family: Pixelify Sans, sans-serif;
 }
 .logo:hover {
@@ -197,7 +197,7 @@ section{
    width: 36vw;
    height: fit-content;
    border-radius: 80%;
-   box-shadow: 0 0 25px var(var(--main-color));
+   box-shadow: 0 0 25px var(--main-color);
    transition: 0.4s ease-in-out;
 }
 .about-img img:hover {
@@ -411,6 +411,7 @@ section{
 
     .header{
         padding: 2rem 5%;
+        overflow: hidden;
     }
 
     section{
@@ -421,7 +422,8 @@ section{
         position: absolute;
         top: 100%;
         right: -100%;
-        width: 260px;
+        width: 70%;
+        max-width: 300px;
         padding: 2rem 3%;
         background: rgba(0,0,0,0.95);
         border-left: 2px solid var(--main-color);
@@ -462,15 +464,18 @@ section{
     .home-content p{
         font-size: 1.5rem;
         line-height: 1.8;
+        max-width: 100%;
+        word-break: break-word;
     }
 
     .home-content{
         align-items: center;
+        text-align: center;
     }
 
     .home-img img{
-        width: 80vw;
-        max-width: 350px;
+        width: 75vw;
+        max-width: 300px;
     }
 
     .social-icons{
