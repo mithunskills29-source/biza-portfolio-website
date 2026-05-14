@@ -11,43 +11,62 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Press+Start+2P&display=swap"
             rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
         
     </head>
     <body>
-        <header class = "header">
-            <a href="#home" class="logo">
+        <header data-aos="fade-down" data-aos-duration="1500" class = "header">
+            <a href="#home"  class="logo">
                 BIZ <span> ART </span>
             </a>
 
             <i class='bx bx-menu' id="menu-icon"></i>
 
             <nav class="navbar">
-                 <a href="#home">Home</a>
-                 <a href="#about">About</a>
-                 <a href="#services">Services</a>
-                 <a href="#projects">Projects</a>
-                 <a href="#contact">Contact</a>
+                 <a data-aos="fade-down" data-aos-duration="1500" href="#home">Home</a>
+                 <a data-aos="fade-down" data-aos-duration="2000" href="#about">About</a>
+                 <a data-aos="fade-down" data-aos-duration="2500" href="#services">Services</a>
+                 <a data-aos="fade-down" data-aos-duration="3000" href="#projects">Projects</a>
+                 <a data-aos="fade-down" data-aos-duration="3500" href="#contact">Contact</a>
             </nav>
 
-            <a href="#contact" class="gradient-btn">Contact Me</a>
+            <a data-aos="fade-down" data-aos-duration="1500" href="#contact" class="gradient-btn">Contact Me</a>
         </header>
 
         <section class="home" id="home">
-                <div class="home-content">
-                    <h1>Hi, It's <span>Biza</span></h1>
-                    <h3>I'm a <span> Pixel Artist</span></h3>
-                    <p> Creative Pixel Artist with 10+ years of experience crafting detailed pixel art,
+                <div data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-delay="300"
+     data-aos-offset="0" data-aos-duration="1500" class="home-content">
+                    <h1 data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-delay="300"
+     data-aos-offset="0" data-aos-duration="2000">Hi, It's <span>Biza</span></h1>
+                    <h3 data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-delay="300"
+     data-aos-offset="0" data-aos-duration="2500">I'm a <span> Pixel Artist</span></h3>
+                    <p data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-delay="300"
+     data-aos-offset="0" data-aos-duration="2500"> Creative Pixel Artist with 10+ years of experience crafting detailed pixel art,
                          game assets, animations, and retro-inspired visuals.Skilled in character design, environment art, color theory,
                          and transforming ideas into visually engaging artwork.</p>
 
-                    <div class="social-icons">
+                    <div data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-delay="300"
+     data-aos-offset="0" data-aos-duration="3000" class="social-icons">
                         <a href="https://www.instagram.com/biza.503" target="_blank"><i class='bx bxl-instagram'></i></a>
                         <a href="https://x.com/Visakan50" target="_blank"><i class='bx bxl-twitter'></i></a>
                         <a href="#"><i class='bx bxl-discord'></i></a>
                         <a href="https://www.linkedin.com/in/visakan-saravanan-442787187/" target="_blank"><i class='bx bxl-linkedin'></i></a>
                     </div>
 
-                    <div class="btn-group">
+                    <div data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-delay="300"
+     data-aos-offset="0" data-aos-duration="3500" class="btn-group">
                         <a href="#" class ="btn">Hire</a>
                         <a href="#contact" class="btn">Contact</a>
                     </div>
@@ -217,5 +236,9 @@
         <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
         <script src="script.js"></script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
     </body>
 </html>
