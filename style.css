@@ -377,7 +377,7 @@ section{
 .footer .social-icons{
     text-align: center;
 }
-.footer u1{
+.footer ul{
     justify-content: center;
     display: flex;
     align-items: center;
@@ -385,12 +385,12 @@ section{
     padding: 0rem;
     gap: 2rem;
 }
-.footer u1 li a{
+.footer ul li a{
     color: white;
     border-bottom: 3px solid transparent;
     transition: 0.3s ease-in-out;
 }
-.footer u1 li a:hover{
+.footer ul li a:hover{
     border-bottom: 3px solid var(--main-color);
 }
 .footer .copyright{
