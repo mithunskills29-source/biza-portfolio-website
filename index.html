@@ -125,7 +125,7 @@ Review Project
                             <h3> Project 4</h3>
                             <p> Some Fyn Shit</p>
                             <div class="btn" onclick="openPopup(
-'insp4.png',
+['insp4.png', 'girl (1).jpeg', 'girl (2).jpeg', 'girl (3).jpeg', 'girl (4).jpeg', 'girl (5).jpeg', 'girl (6).jpeg', 'girl (7).jpeg', 'girl (8).jpeg'],
 'Some Fyn Shit',
 'A retro-inspired pixel art project featuring unique visuals and creative design.',
 'Aseprite, Photoshop'
@@ -187,11 +187,19 @@ Review Project
         <!-- RIGHT -->
         <div class="popup-right">
 
-            <img id="popup-img" src="" alt="">
+    <button class="slider-btn prev" onclick="changeSlide(-1)">
+        &#10094;
+    </button>
 
-            <video id="popup-video" autoplay muted loop playsinline controls></video>
+    <img id="popup-img" src="" alt="">
 
-        </div>
+    <video id="popup-video" autoplay muted loop playsinline controls></video>
+
+    <button class="slider-btn next" onclick="changeSlide(1)">
+        &#10095;
+    </button>
+
+</div>
 
     </div>
 
