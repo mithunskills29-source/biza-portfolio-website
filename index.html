@@ -9,8 +9,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" rel='stylesheet'>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Press+Start+2P&display=swap"
-            rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
         
     </head>
@@ -25,7 +24,7 @@
             <nav class="navbar">
                  <a data-aos="fade-down" data-aos-duration="1500" href="#home">Home</a>
                  <a data-aos="fade-down" data-aos-duration="2000" href="#about">About</a>
-                 <a data-aos="fade-down" data-aos-duration="2500" href="#services">Services</a>
+                 <a data-aos="fade-down" data-aos-duration="2500" href="portfolio.html">Portfolio</a>
                  <a data-aos="fade-down" data-aos-duration="3000" href="#projects">Projects</a>
                  <a data-aos="fade-down" data-aos-duration="3500" href="#contact">Contact</a>
             </nav>
@@ -72,18 +71,24 @@
                     </div>
                 </div>
 
-                <div class="home-img">
-                    <img src="image.jpg" alt="">
+                <div>
+                    <video class="home-video" muted loop playsinline>
+                        <source src="home-video-2.mp4" type="video/mp4">
+                    </video>
                 </div>
         </section>
 
         <section class="about" id="about">
+            <div class="about-bg">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+            </div>
 
-                <div class="about-img">
-                    <img src="about.jpg" alt="">
-                </div>
-
-                <div class="about-content">
+               
+                <div class="about-content hidden">
                     <h2>About <span>Me</span></h2>
                     <p>I'm a passionate Pixel Artist with 10+ years of experience creating high-quality game assets,
                         character designs, environments, and retro-inspired visuals. I specialize in crafting detailed pixel art that brings games
@@ -93,95 +98,108 @@
                 </div>
         </section>
 
-        <section class="services" id="services">
-
-                <h2 class="heading">Services</h2>
-
-                <div class="services-container">
-                    <div class="services-box">
-                    <div class="services-info">
-                        <i class="bx bx-user-circle"></i>
-                        <h4>Character Art</h4>
-                        <p>Unique pixel characters designed with personality, detail, and retro charm.</p>
-                    </div>
-                </div>
-
-                 <div class="services-box">
-                    <div class="services-info">
-                        <i class="bx bx-pacman"></i>
-                        <h4>Retro Inspired Visuals</h4>
-                        <p>Classic retro-style visuals inspired by vintage arcade and console games.</p>
-                    </div>
-                </div>
-
-                 <div class="services-box">
-                    <div class="services-info">
-                        <i class="bx bx-motion-alt"></i>
-                        <h4> Pixel Animations </h4>
-                        <p>Engaging pixel animations that bring characters and environments to life.</p>
-                    </div>
-                </div>
-        </section>
+       
 
         <section class="projects" id="projects">
                 <h2 class="heading">Projects</h2>
 
-                <div class="projects-box">
-
-                    <div class="projects-box">
-                        <div class="project-card">
-                            <img src="insp1.jpg" alt="">
-                            <h3> Project 1</h3>
-                            <p> Cosy Little Alley</p>
-                            <div class="btn">Review Project</div>
-                        </div>
-                    </div>
-
-                    <div class="projects-box">
-                        <div class="project-card">
-                            <img src="insp2.png" alt="">
-                            <h3> Project 2</h3>
-                            <p> Game Assets- Guns</p>
-                            <div class="btn">Review Project</div>
-                        </div>
-                    </div>
-
-                    <div class="projects-box">
+                <div class="projects-container">
+ 
                         <div class="project-card">
                             <img src="insp3.png" alt="">
                             <h3> Project 3</h3>
                             <p> Character Designs</p>
-                            <div class="btn">Review Project</div>
-                        </div>
+                           <div class="btn" onclick="openPopup(
+'insp3.png',
+'Character Designs',
+'Retro pixel character designs with animation concepts.',
+'Aseprite'
+)">
+Review Project
+</div>
                     </div>
 
-                    <div class="projects-box">
+                    
                         <div class="project-card">
                             <img src="insp4.png" alt="">
                             <h3> Project 4</h3>
                             <p> Some Fyn Shit</p>
-                            <div class="btn">Review Project</div>
+                            <div class="btn" onclick="openPopup(
+'insp4.png',
+'Some Fyn Shit',
+'A retro-inspired pixel art project featuring unique visuals and creative design.',
+'Aseprite, Photoshop'
+)">
+Review Project
+</div>
                         </div>
-                    </div>
+                    
 
-                    <div class="projects-box">
+                    
                         <div class="project-card">
                             <video src="insp5.mp4" autoplay muted loop></video> 
-                            <h3> Project 5</h3>
-                            <p> Katanaut- BOSS</p>
-                            <div class="btn">Review Project</div>
+                            <h3> KATANAUT </h3>
+                           <div class="btn" onclick="openPopup(
+'insp5.mp4',
+'Katanaut- BOSS',
+'A retro-inspired pixel art project featuring a powerful boss character.',
+'Aseprite, Photoshop'
+)">
+Review Project
+</div>
                         </div>
-                    </div>
+                    
 
-                    <div class="projects-box">
+                    
                         <div class="project-card">
                             <video src="insp6.mp4" autoplay muted loop></video> 
-                            <h3> Project 6</h3>
-                            <p> Athena Crisis- Sprites</p>
-                            <div class="btn">Review Project</div>
+                            <h3> ATHENA CRISIS</h3>
+                           <div class="btn" onclick="openPopup(
+'insp6.mp4',
+'Athena Crisis- Sprites',
+'Pixel sprite assets for the Athena Crisis game.',
+'Aseprite'
+)">
+Review Project
+</div>
                         </div>
-                    </div>
-                </div>
+                    
+        
+<div class="popup" id="projectPopup">
+
+    <div class="popup-content">
+
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+
+        <!-- LEFT -->
+        <div class="popup-left">
+
+            <h2 id="popup-title"></h2>
+
+            <p id="popup-description"></p>
+
+            <h3>Tools Used</h3>
+
+            <p id="popup-tools"></p>
+
+        </div>
+
+        <!-- RIGHT -->
+        <div class="popup-right">
+
+            <img id="popup-img" src="" alt="">
+
+            <video id="popup-video" autoplay muted loop playsinline controls></video>
+
+        </div>
+
+    </div>
+
+</div>
+  
+
+</div>
+
         </section>
 
         <section class="contact" id="contact">
