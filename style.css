@@ -38,7 +38,10 @@ body {
     font-size: 3.5rem;
     color: var(--main-color);
     display: none;
-    cursor: pointer
+    cursor: pointer;
+    border: 0;
+    padding: .5rem;
+    background: transparent;
 }
 
 .logo {
@@ -656,7 +659,6 @@ section{
 
     .header{
         padding: 2rem 5%;
-        overflow: hidden;
     }
 
     section{
@@ -666,36 +668,34 @@ section{
    
 
     .navbar{
-        position: fixed;
-
-        top: 80px;
-        right: -100%;
-
-        width: 280px;
-        height: auto;
-
-        background: #080808;
-
+        position: absolute;
+        top: calc(100% + .8rem);
+        right: 5%;
+        width: min(280px, 90vw);
         display: flex;
         flex-direction: column;
-
         padding: 2rem;
-
-        border: 2px solid var(--main-color);
-
-        z-index: 10001;
-
-        transition: right .3s ease;
+        border: 1px solid var(--main-color);
+        background: rgba(8, 8, 8, .97);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, .45);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-.8rem);
+        transition: opacity .2s ease, transform .2s ease, visibility .2s;
     }
 
     .navbar.active{
-        right: 10px;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
     }
 
     .navbar a{
         display: block;
-        margin: 1.5rem 0;
+        margin: 0;
+        padding: 1.3rem .5rem;
         font-size: 2rem;
+        border-bottom-width: 1px;
     }
 
 
@@ -828,4 +828,124 @@ section{
 
 .gallery-item:hover::after{
     opacity: 1;
+}
+
+.admin-trigger,
+.admin-submit,
+.admin-secondary,
+.admin-close{
+    font: inherit;
+    cursor: pointer;
+}
+
+.admin-trigger{
+    border: 1px solid var(--main-color);
+    background: transparent;
+    color: var(--text-color);
+    padding: 1rem 1.6rem;
+    font-size: 1.5rem;
+    transition: background .2s ease, color .2s ease;
+}
+
+.admin-trigger:hover,
+.admin-secondary:hover{
+    background: var(--main-color);
+    color: #080808;
+}
+
+.admin-overlay{
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: rgba(0,0,0,.78);
+    backdrop-filter: blur(8px);
+}
+
+.admin-overlay.is-open{ display: flex; }
+
+.admin-panel{
+    position: relative;
+    width: min(100%, 980px);
+    min-height: 0;
+    max-height: min(90vh, 860px);
+    overflow: auto;
+    padding: 4rem;
+    border: 1px solid rgba(234,88,12,.55);
+    background: #101010;
+    box-shadow: 0 20px 80px rgba(0,0,0,.55);
+}
+
+.admin-close{
+    position: absolute;
+    top: 1.2rem;
+    right: 1.6rem;
+    border: 0;
+    background: transparent;
+    color: white;
+    font-size: 3rem;
+    line-height: 1;
+}
+
+.admin-login{ width: min(100%, 420px); margin: 2rem auto; }
+.admin-kicker{ margin-bottom: .8rem; color: var(--main-color); font-size: 1.3rem; text-transform: uppercase; }
+.admin-panel h2{ margin-bottom: 2rem; font-size: 3rem; }
+.admin-panel h3{ font-size: 1.8rem; }
+.admin-panel label{ display: block; margin: 1.6rem 0 .6rem; font-size: 1.4rem; }
+.admin-panel input{
+    width: 100%;
+    min-height: 4.4rem;
+    padding: 1rem;
+    border: 1px solid #49433f;
+    border-radius: 2px;
+    outline: none;
+    background: #080808;
+    color: white;
+    font: 1.5rem 'Poppins', sans-serif;
+}
+.admin-panel input:focus{ border-color: var(--main-color); }
+.admin-submit,
+.admin-secondary{
+    min-height: 4rem;
+    padding: .8rem 1.4rem;
+    border: 1px solid var(--main-color);
+    border-radius: 2px;
+    font-size: 1.4rem;
+}
+.admin-submit{ background: var(--main-color); color: #080808; font-weight: 600; }
+.admin-submit:hover{ background: #ff7b32; }
+.admin-secondary{ background: transparent; color: white; }
+.admin-login .admin-submit{ width: 100%; margin-top: 1rem; }
+.admin-message{ min-height: 1.8rem; margin-top: .8rem; color: #ff9a76; font: 1.3rem 'Poppins', sans-serif; }
+.admin-dashboard-heading,
+.admin-list-heading,
+.admin-form-actions{ display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.admin-dashboard-heading{ margin-bottom: 2.4rem; padding-bottom: 1.6rem; border-bottom: 1px solid #38312d; }
+.admin-dashboard-heading h2{ margin: 0; }
+.admin-workspace{ display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, .8fr); gap: 3rem; }
+.admin-list-heading{ margin-bottom: 1rem; }
+.admin-note{ margin: .8rem 0 1.4rem; color: #aaa; font: 1.2rem/1.6 'Poppins', sans-serif; }
+.admin-projects ul{ max-height: 48vh; overflow: auto; list-style: none; }
+.admin-projects li{ display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 0; border-top: 1px solid #302b28; }
+.admin-project-name{ min-width: 0; overflow-wrap: anywhere; color: white; font: 1.3rem 'Poppins', sans-serif; }
+.admin-project-path{ display: block; overflow: hidden; color: #999; text-overflow: ellipsis; white-space: nowrap; }
+.admin-project-actions{ display: flex; flex: 0 0 auto; gap: .6rem; }
+.admin-danger{ min-height: 4rem; padding: .8rem 1.2rem; border: 1px solid #bd4131; border-radius: 2px; background: transparent; color: #ff8878; font: inherit; font-size: 1.4rem; cursor: pointer; }
+.admin-danger:hover{ background: #bd4131; color: white; }
+.admin-editor{ align-self: start; padding: 2rem; border: 1px solid #38312d; background: #0b0b0b; }
+.admin-editor h3{ margin-bottom: .8rem; }
+.gallery-item::after{ content: attr(data-title); padding: 1rem; text-align: center; }
+
+@media (max-width: 720px){
+    .header{ padding: 2rem 5%; }
+    .header .logo{ font-size: 2.5rem; }
+    .header .navbar a{ margin-left: 1.2rem; font-size: 1.4rem; }
+    .admin-trigger{ padding: .8rem 1rem; font-size: 1.3rem; }
+    .admin-panel{ padding: 4rem 2rem 2rem; }
+    .admin-workspace{ grid-template-columns: 1fr; }
+    .admin-projects ul{ max-height: 30vh; }
+    .gallery{ column-count: 2; }
 }

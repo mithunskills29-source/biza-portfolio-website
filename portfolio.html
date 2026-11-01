@@ -6,6 +6,7 @@
     <title>Portfolio | Biza Art</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -19,10 +20,16 @@
             BIZ <span>ART</span>
         </a>
 
-        <nav class="navbar">
+        <button type="button" id="menu-icon" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-navigation">
+            <i class="bx bx-menu" aria-hidden="true"></i>
+        </button>
+
+        <nav class="navbar" id="site-navigation">
             <a href="index.html">Home</a>
             <a href="portfolio.html" class="active">Portfolio</a>
         </nav>
+
+        <button class="admin-trigger" id="admin-open" type="button">Admin</button>
 
     </header>
 
@@ -212,6 +219,60 @@
     </div>
 
 </section>
+
+<div class="admin-overlay" id="admin-overlay" aria-hidden="true">
+    <section class="admin-panel" role="dialog" aria-modal="true" aria-labelledby="admin-heading">
+        <button class="admin-close" id="admin-close" type="button" aria-label="Close admin panel">&times;</button>
+        <div class="admin-login" id="admin-login">
+            <p class="admin-kicker">Portfolio access</p>
+            <h2 id="admin-heading">Admin sign in</h2>
+            <form id="admin-login-form">
+                <label for="admin-username">Username</label>
+                <input id="admin-username" name="username" autocomplete="username" required>
+                <label for="admin-password">Password</label>
+                <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+                <p class="admin-message" id="login-message" role="alert"></p>
+                <button class="admin-submit" type="submit">Sign in</button>
+            </form>
+        </div>
+
+        <div class="admin-dashboard" id="admin-dashboard" hidden>
+            <div class="admin-dashboard-heading">
+                <div>
+                    <p class="admin-kicker">Portfolio manager</p>
+                    <h2 id="dashboard-heading">Projects</h2>
+                </div>
+                <button class="admin-secondary" id="admin-logout" type="button">Sign out</button>
+            </div>
+            <div class="admin-workspace">
+                <div class="admin-projects">
+                    <div class="admin-list-heading">
+                        <h3>Current projects</h3>
+                        <button class="admin-secondary" id="project-new" type="button">+ Add project</button>
+                    </div>
+                    <p class="admin-note">Changes and uploaded media are saved in this browser.</p>
+                    <ul id="admin-project-list"></ul>
+                </div>
+                <form class="admin-editor" id="project-form">
+                    <h3 id="project-form-heading">Add a project</h3>
+                    <label for="project-title">Project title</label>
+                    <input id="project-title" name="title" maxlength="80" required>
+                    <label for="project-media">Project image or video</label>
+                    <input id="project-media" name="media" type="file" accept=".jpg,.jpeg,.mp4,image/jpeg,video/mp4">
+                    <p class="admin-note" id="project-file-name">Choose a JPG or MP4 from this device. When editing, leave this empty to keep the current file.</p>
+                    <p class="admin-note">Uploaded files stay in this browser and appear in the portfolio gallery.</p>
+                    <p class="admin-message" id="project-message" role="alert"></p>
+                    <div class="admin-form-actions">
+                        <button class="admin-submit" type="submit" id="project-save">Add project</button>
+                        <button class="admin-secondary" type="button" id="project-cancel" hidden>Cancel edit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="portfolio-admin.js" defer></script>
 
 </body>
 </html>

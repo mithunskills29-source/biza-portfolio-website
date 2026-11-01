@@ -3,10 +3,29 @@ let navbar = document.querySelector('.navbar');
 let currentSlide = 0;
 let currentGallery = [];
 
-menuIcon.onclick = () => {
-    menuIcon.classList.toggle('bx-x');
-    navbar.classList.toggle('active');
-};
+if (menuIcon && navbar) {
+    const menuGlyph = menuIcon.querySelector('i');
+
+    function closeMenu() {
+        navbar.classList.remove('active');
+        menuIcon.setAttribute('aria-expanded', 'false');
+        menuIcon.setAttribute('aria-label', 'Open navigation menu');
+        menuGlyph.classList.replace('bx-x', 'bx-menu');
+    }
+
+    menuIcon.addEventListener('click', () => {
+        const isOpen = navbar.classList.toggle('active');
+        menuIcon.setAttribute('aria-expanded', String(isOpen));
+        menuIcon.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+        menuGlyph.classList.toggle('bx-menu', !isOpen);
+        menuGlyph.classList.toggle('bx-x', isOpen);
+    });
+
+    navbar.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') closeMenu();
+    });
+}
 
 emailjs.init("HT525Uc5AYVBrzPtf");
 
