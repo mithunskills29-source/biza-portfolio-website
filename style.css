@@ -755,6 +755,30 @@ section{
         text-align: center;
     }
 
+    .about-content{
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        transform: none;
+        text-align: center;
+    }
+
+    .about-content h2{
+        font-size: 4rem;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .about-content p{
+        font-size: 1.6rem;
+        line-height: 1.7;
+        overflow-wrap: anywhere;
+    }
+
+    .about-content .btn{
+        margin: 2rem auto 0;
+    }
+
     .contact form{
         display: flex;
         flex-direction: column;
