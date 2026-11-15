@@ -1,5 +1,5 @@
 const ADMIN_USERNAME = "admin";
-const ADMIN_PASSWORD = "admin123";
+const ADMIN_PASSWORD = "lebronjames";
 const PROJECTS_KEY = "biza-art-portfolio-projects-v1";
 const MEDIA_DB = "biza-art-portfolio-media-v1";
 const MEDIA_STORE = "files";
