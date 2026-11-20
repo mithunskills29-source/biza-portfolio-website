@@ -805,18 +805,17 @@ section{
 }
 
 .gallery{
-    column-count: 3;
-    column-gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
 }
 
 .gallery-item{
-    margin-bottom: 1.5rem;
     overflow: hidden;
     border-radius: 1.5rem;
     border: 2px solid var(--main-color);
     box-shadow: 0 0 10px var(--main-color);
     transition: 0.3s ease;
-    break-inside: avoid;
 }
 
 .gallery-item:hover{
@@ -954,6 +953,11 @@ section{
 .admin-note{ margin: .8rem 0 1.4rem; color: #aaa; font: 1.2rem/1.6 'Poppins', sans-serif; }
 .admin-projects ul{ max-height: 48vh; overflow: auto; list-style: none; }
 .admin-projects li{ display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 0; border-top: 1px solid #302b28; }
+.admin-projects li.is-dragging{ opacity: .45; }
+.admin-projects li.drag-over{ border-top: 3px solid var(--main-color); }
+.admin-drag-handle{ flex: 0 0 3.6rem; min-height: 3.6rem; padding: 0; border: 1px solid #50473f; border-radius: 2px; background: #171717; color: #aaa; font: 700 1.6rem/1 'Poppins', sans-serif; letter-spacing: .15rem; cursor: grab; }
+.admin-drag-handle:active{ cursor: grabbing; }
+.admin-drag-handle:focus-visible{ outline: 2px solid var(--main-color); outline-offset: 2px; }
 .admin-project-name{ min-width: 0; overflow-wrap: anywhere; color: white; font: 1.3rem 'Poppins', sans-serif; }
 .admin-project-path{ display: block; overflow: hidden; color: #999; text-overflow: ellipsis; white-space: nowrap; }
 .admin-project-actions{ display: flex; flex: 0 0 auto; gap: .6rem; }
@@ -971,5 +975,5 @@ section{
     .admin-panel{ padding: 4rem 2rem 2rem; }
     .admin-workspace{ grid-template-columns: 1fr; }
     .admin-projects ul{ max-height: 30vh; }
-    .gallery{ column-count: 2; }
+    .gallery{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

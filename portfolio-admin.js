@@ -17,6 +17,7 @@ const menuIcon = document.getElementById("menu-icon");
 const navbar = document.querySelector(".navbar");
 let editingId = null;
 let activeObjectUrls = [];
+let draggedProjectId = null;
 
 menuIcon.addEventListener("click", () => {
     const isOpen = navbar.classList.toggle("active");
@@ -170,6 +171,26 @@ function renderProjectList() {
     projectList.replaceChildren();
     projects.forEach(project => {
         const row = document.createElement("li");
+        row.dataset.projectId = project.id;
+        const handle = document.createElement("button");
+        handle.className = "admin-drag-handle";
+        handle.type = "button";
+        handle.draggable = true;
+        handle.dataset.projectId = project.id;
+        handle.textContent = "::";
+        handle.title = "Drag to rearrange";
+        handle.setAttribute("aria-label", `Drag ${project.title} to rearrange. Use the up and down arrow keys as an alternative.`);
+        handle.addEventListener("dragstart", event => {
+            draggedProjectId = project.id;
+            row.classList.add("is-dragging");
+            event.dataTransfer.effectAllowed = "move";
+            event.dataTransfer.setData("text/plain", project.id);
+        });
+        handle.addEventListener("keydown", event => {
+            if (event.key !== "ArrowUp" && event.key !== "ArrowDown") return;
+            event.preventDefault();
+            moveProject(project.id, event.key === "ArrowUp" ? -1 : 1);
+        });
         const name = document.createElement("span");
         name.className = "admin-project-name";
         name.textContent = project.title;
@@ -191,10 +212,77 @@ function renderProjectList() {
         const actions = document.createElement("div");
         actions.className = "admin-project-actions";
         actions.append(edit, remove);
-        row.append(name, actions);
+        row.append(handle, name, actions);
         projectList.append(row);
     });
 }
+
+function applyProjectOrder(nextProjects) {
+    const previousProjects = projects;
+    projects = nextProjects;
+    if (!saveProjects()) {
+        projects = previousProjects;
+        renderProjectList();
+        return;
+    }
+    renderProjectList();
+    renderGallery();
+}
+
+function moveProject(projectId, offset) {
+    const currentIndex = projects.findIndex(project => project.id === projectId);
+    const nextIndex = currentIndex + offset;
+    if (currentIndex < 0 || nextIndex < 0 || nextIndex >= projects.length) return;
+
+    const nextProjects = [...projects];
+    const [movedProject] = nextProjects.splice(currentIndex, 1);
+    nextProjects.splice(nextIndex, 0, movedProject);
+    applyProjectOrder(nextProjects);
+
+    const movedHandle = [...projectList.querySelectorAll(".admin-drag-handle")]
+        .find(handle => handle.dataset.projectId === movedProject.id);
+    movedHandle?.focus();
+}
+
+projectList.addEventListener("dragover", event => {
+    event.preventDefault();
+    if (!draggedProjectId) return;
+    const targetRow = event.target.closest("li");
+    if (!targetRow || targetRow.dataset.projectId === draggedProjectId) return;
+
+    projectList.querySelectorAll(".drag-over").forEach(row => row.classList.remove("drag-over"));
+    targetRow.classList.add("drag-over");
+});
+
+projectList.addEventListener("drop", event => {
+    event.preventDefault();
+    const targetRow = event.target.closest("li");
+    if (!targetRow || !draggedProjectId) return;
+
+    const draggedRow = [...projectList.querySelectorAll("li")]
+        .find(row => row.dataset.projectId === draggedProjectId);
+    if (!draggedRow) return;
+
+    const targetRect = targetRow.getBoundingClientRect();
+    const placeAfter = event.clientY > targetRect.top + targetRect.height / 2;
+    if (placeAfter) {
+        targetRow.after(draggedRow);
+    } else {
+        targetRow.before(draggedRow);
+    }
+
+    const orderedIds = [...projectList.querySelectorAll("li")].map(row => row.dataset.projectId);
+    const projectsById = new Map(projects.map(project => [project.id, project]));
+    applyProjectOrder(orderedIds.map(id => projectsById.get(id)).filter(Boolean));
+    draggedProjectId = null;
+});
+
+projectList.addEventListener("dragend", () => {
+    draggedProjectId = null;
+    projectList.querySelectorAll(".is-dragging, .drag-over").forEach(row => {
+        row.classList.remove("is-dragging", "drag-over");
+    });
+});
 
 function deleteProject(project) {
     const previousProjects = projects;
@@ -235,7 +323,7 @@ function resetProjectForm() {
     document.getElementById("project-save").textContent = "Add project";
     document.getElementById("project-cancel").hidden = true;
     document.getElementById("project-message").textContent = "";
-    document.getElementById("project-file-name").textContent = "Choose a JPG or MP4 from this device. When editing, leave this empty to keep the current file.";
+    document.getElementById("project-file-name").textContent = "Choose a JPG, JFIF, GIF, or MP4 from this device. When editing, leave this empty to keep the current file.";
 }
 
 function showAdmin() {
@@ -309,12 +397,12 @@ projectForm.addEventListener("submit", async event => {
     const message = document.getElementById("project-message");
     message.textContent = "";
 
-    if (file && !/\.(jpe?g|mp4)$/i.test(file.name)) {
-        message.textContent = "Choose a JPG or MP4 file.";
+    if (file && !/\.(jpe?g|jfif|gif|mp4)$/i.test(file.name)) {
+        message.textContent = "Choose a JPG, JFIF, GIF, or MP4 file.";
         return;
     }
     if (!editingId && !file) {
-        message.textContent = "Choose a JPG or MP4 file to add this project.";
+        message.textContent = "Choose a JPG, JFIF, GIF, or MP4 file to add this project.";
         return;
     }
 
