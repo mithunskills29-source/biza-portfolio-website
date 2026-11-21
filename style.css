@@ -209,7 +209,7 @@ section{
     background:
     linear-gradient(rgba(0,0,0,0.6),
                     rgba(0,0,0,0.6)),
-    url("about-bg.jpg");
+    url("Assets/about-bg.jpg");
 
     background-size: cover;
     background-position: center;
@@ -584,7 +584,7 @@ section{
         rgba(0,0,0,0.75),
         rgba(0,0,0,0.75)
     ),
-    url("contact-bg2.jpeg");
+    url("Assets/contact-bg2.jpeg");
 
     background-size: cover;
     background-position: center;

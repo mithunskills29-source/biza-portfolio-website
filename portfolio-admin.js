@@ -54,7 +54,26 @@ function readProjects() {
     if (saved) {
         try {
             const projects = JSON.parse(saved);
-            if (Array.isArray(projects)) return projects;
+            if (Array.isArray(projects)) {
+                const normalizedProjects = projects.map(project => {
+                    if (typeof project.media !== "string"
+                        || project.media.startsWith("upload:")
+                        || project.media.includes("/")
+                        || project.media.includes("\\")
+                        || /^[a-z]+:/i.test(project.media)) {
+                        return project;
+                    }
+                    return { ...project, media: `Assets/${project.media}` };
+                });
+                if (normalizedProjects.some((project, index) => project !== projects[index])) {
+                    try {
+                        localStorage.setItem(PROJECTS_KEY, JSON.stringify(normalizedProjects));
+                    } catch (error) {
+                        console.warn("Legacy portfolio media paths could not be migrated.", error);
+                    }
+                }
+                return normalizedProjects;
+            }
         } catch (error) {
             console.warn("Saved portfolio projects could not be read.", error);
         }
